@@ -20,7 +20,7 @@ of file they wish to analyze
 /*
     rules:
     
-    <PROGRAM>	--> <PROGRAM>   --> "{" <START> "}"
+    <PROGRAM>	--> "{" <START> "}"
     <START>   	--> <STMT> ";" {<STMT> ";"}
     <STMT>     	--> <EXPR> {"=" <EXPR>}
     <EXPR>      --> <TERM> {("==", "!=", "<", ">") <TERM>}
