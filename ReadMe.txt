@@ -49,7 +49,5 @@ of file they wish to analyze
     end of statement=   ;     
     begin program   =   {
     end program     =   }	          
-    everything else =   undefined 
-    
-    
+    everything else =   undefined     
 */
