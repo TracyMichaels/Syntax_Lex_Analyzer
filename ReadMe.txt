@@ -46,7 +46,10 @@ of file they wish to analyze
     assignment op   =   =
     open parenthesis=   (
     close paren     =   )
-    end of statement=   ;               
+    end of statement=   ;     
+    begin program   =   {
+    end program     =   }	          
     everything else =   undefined 
+    
     
 */
