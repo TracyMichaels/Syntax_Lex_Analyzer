@@ -1,6 +1,4 @@
-
 import java.util.List;
-
 
 /**
  *
@@ -50,8 +48,7 @@ public class SyntaxAnalyzer {
         while(tokens.get(currTokenIndex) == SymbolTable.END_STMT){
             getNextToken();
             if(tokens.get(currTokenIndex) == SymbolTable.END_PROGRAM) return;
-            STMT();
-            
+            STMT();            
         }
         if(tokens.get(currTokenIndex) != SymbolTable.END_STMT) System.exit(exitWithErr());
         currTokenIndex++;
