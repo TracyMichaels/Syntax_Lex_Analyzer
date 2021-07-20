@@ -20,8 +20,9 @@ of file they wish to analyze
 /*
     rules:
     
-    <START>   --> <STMT> ";" {<STMT> ";"}
-    <STMT>     --> <EXPR> {"=" <EXPR>}
+    <PROGRAM>	--> <PROGRAM>   --> "{" <START> "}"
+    <START>   	--> <STMT> ";" {<STMT> ";"}
+    <STMT>     	--> <EXPR> {"=" <EXPR>}
     <EXPR>      --> <TERM> {("==", "!=", "<", ">") <TERM>}
     <TERM>      --> <FACTOR> {("+", "-") <FACTOR>}
     <FACTOR>    --> <ID> {("*", "/", "%") <ID>}
