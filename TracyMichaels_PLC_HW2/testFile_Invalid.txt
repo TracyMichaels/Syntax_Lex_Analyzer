@@ -1,0 +1,2 @@
+4 ++ 20;
+this_is_invalid *= 0;
