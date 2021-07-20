@@ -1,9 +1,7 @@
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-
 
 /**
  *
@@ -15,8 +13,7 @@ public class MainDriver {
         String inputFile; 
         String fileContents;
         StringBuilder fileContentsBuilder;
-        Scanner sc = new Scanner(System.in);
-        
+        Scanner sc = new Scanner(System.in);        
         
         //get input, either commandline args or user input
         //precondition: must be file path
