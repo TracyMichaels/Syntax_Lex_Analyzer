@@ -1,4 +1,3 @@
-
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -74,7 +73,6 @@ public class SymbolTable {
         SYMBOL_MAP.put(CLOSE_PAREN_SIGN, CLOSE_PAREN);
         SYMBOL_MAP.put(END_STMT_SIGN, END_STMT); 
         SYMBOL_MAP.put(BEGIN_PROGRAM_SIGN, BEGIN_PROGRAM); 
-        SYMBOL_MAP.put(END_PROGRAM_SIGN, END_PROGRAM); 
-        
+        SYMBOL_MAP.put(END_PROGRAM_SIGN, END_PROGRAM);         
     }    
 }
