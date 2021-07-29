@@ -55,8 +55,16 @@ public class Tokenizer {
             
             //if current character is in symbol map and
             if(SymbolChart.SYMBOL_MAP.containsKey(input.charAt(charIndex))){
-                //if temp is not empty compare to regex for var or lit
+                //if temp is not empty check for keyword or
+                //compare to regex for var or lit
                 if(!temp.equals("")){
+                    //check for keyword and add to tokens if it exits
+                    if(SymbolChart.KEYWORD_MAP.containsKey(temp)){
+                        tokens.add(SymbolChart.KEYWORD_MAP.get(temp));
+                        //reset temp
+                        temp = "";
+                        continue;                        
+                    }
                     if(SymbolChart.INT_PATTERN.matcher(temp).matches()){
                         tokens.add(SymbolChart.INT_LIT);
                     }else if(SymbolChart.FLOAT_PATTERN.matcher(temp).matches()){
