@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  *
  * @author Tracy
  */
-public class SymbolTable {
+public class SymbolChart {
     
     //regex patterns for int literal, float literal, and variables
     public final static Pattern INT_PATTERN = Pattern.compile("\\d+");
@@ -58,6 +58,35 @@ public class SymbolTable {
     public final static int BEGIN_PROGRAM = 600; 
     public final static int END_PROGRAM = 610; 
     
+    
+    
+    //key words
+    public static final String FOR_KEY_STR = "for";
+    public static final String IF_KEY_STR = "for";
+    public static final String ELSE_KEY_STR = "for";
+    public static final String WHILE_KEY_STR = "for";
+    public static final String DO_KEY_STR = "for";
+    public static final String INT_KEY_STR = "for";
+    public static final String FLOAT_KEY_STR = "for";
+    public static final String SWITCH_KEY_STR = "for";
+    public static final String CLASS_KEY_STR = "for";
+    public static final String VOID_KEY_STR = "for";
+    public static final String BOOL_KEY_STR = "for";
+    
+    public static final int FOR_KEY = 701;
+    public static final int IF_KEY = 702;
+    public static final int ELSE_KEY = 703;
+    public static final int WHILE_KEY = 704;
+    public static final int DO_KEY = 705;
+    public static final int INT_KEY = 706;
+    public static final int FLOAT_KEY = 707;
+    public static final int SWITCH_KEY = 708;
+    public static final int CLASS_KEY = 709;
+    public static final int VOID_KEY = 710;
+    public static final int BOOL_KEY = 711;
+    
+    
+    
     //map of single special symbol characters
     public static final HashMap<Character, Integer> SYMBOL_MAP = new HashMap<>();
     static {    
@@ -76,5 +105,21 @@ public class SymbolTable {
         SYMBOL_MAP.put(BEGIN_PROGRAM_SIGN, BEGIN_PROGRAM); 
         SYMBOL_MAP.put(END_PROGRAM_SIGN, END_PROGRAM); 
         
-    }    
+    }
+    
+    public static final HashMap<String, Integer> KEYWORD_MAP = new HashMap<>();
+    static {
+        KEYWORD_MAP.put(FOR_KEY_STR, FOR_KEY);
+        KEYWORD_MAP.put(IF_KEY_STR, IF_KEY);
+        KEYWORD_MAP.put(ELSE_KEY_STR, ELSE_KEY);
+        KEYWORD_MAP.put(WHILE_KEY_STR, WHILE_KEY);
+        KEYWORD_MAP.put(DO_KEY_STR, DO_KEY);
+        KEYWORD_MAP.put(INT_KEY_STR, INT_KEY);
+        KEYWORD_MAP.put(FLOAT_KEY_STR, FLOAT_KEY);
+        KEYWORD_MAP.put(SWITCH_KEY_STR, SWITCH_KEY);
+        KEYWORD_MAP.put(CLASS_KEY_STR, CLASS_KEY);
+        KEYWORD_MAP.put(VOID_KEY_STR, VOID_KEY);
+        KEYWORD_MAP.put(BOOL_KEY_STR, BOOL_KEY);
+        
+    }
 }

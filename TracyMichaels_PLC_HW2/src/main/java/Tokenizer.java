@@ -55,17 +55,17 @@ public class Tokenizer {
             }
             
             //if current character is in symbol map and
-            if(SymbolTable.SYMBOL_MAP.containsKey(input.charAt(charIndex))){
+            if(SymbolChart.SYMBOL_MAP.containsKey(input.charAt(charIndex))){
                 //if temp is not empty compare to regex for var or lit
                 if(!temp.equals("")){
-                    if(SymbolTable.INT_PATTERN.matcher(temp).matches()){
-                        tokens.add(SymbolTable.INT_LIT);
-                    }else if(SymbolTable.FLOAT_PATTERN.matcher(temp).matches()){
-                        tokens.add(SymbolTable.FLOAT_LIT);
-                    }else if(SymbolTable.VAR_PATTERN.matcher(temp).matches()){
-                        tokens.add(SymbolTable.VAR);
+                    if(SymbolChart.INT_PATTERN.matcher(temp).matches()){
+                        tokens.add(SymbolChart.INT_LIT);
+                    }else if(SymbolChart.FLOAT_PATTERN.matcher(temp).matches()){
+                        tokens.add(SymbolChart.FLOAT_LIT);
+                    }else if(SymbolChart.VAR_PATTERN.matcher(temp).matches()){
+                        tokens.add(SymbolChart.VAR);
                     } else {
-                        tokens.add(SymbolTable.UNDEFINED);                        
+                        tokens.add(SymbolChart.UNDEFINED);                        
                     }
                     //reset temp
                     temp = "";
@@ -73,27 +73,27 @@ public class Tokenizer {
                 }
                 
                 //check for edge case neg equality symbol
-                if(input.charAt(charIndex) == SymbolTable.NOT_EQUAL_START_SIGN){
-                    if(input.charAt(charIndex + 1) == SymbolTable.ASSIGN_SIGN){
-                        tokens.add(SymbolTable.NOT_EQUAL);
+                if(input.charAt(charIndex) == SymbolChart.NOT_EQUAL_START_SIGN){
+                    if(input.charAt(charIndex + 1) == SymbolChart.ASSIGN_SIGN){
+                        tokens.add(SymbolChart.NOT_EQUAL);
                         charIndex += 2;
                         continue;
                     }
-                    tokens.add(SymbolTable.UNDEFINED);
+                    tokens.add(SymbolChart.UNDEFINED);
                     charIndex++;
                     continue;
                 }
                 
                 //check edge case equality symbol
-                if(input.charAt(charIndex) == SymbolTable.ASSIGN_SIGN
-                   && input.charAt(charIndex + 1) == SymbolTable.ASSIGN_SIGN){
-                    tokens.add(SymbolTable.EQUAL);
+                if(input.charAt(charIndex) == SymbolChart.ASSIGN_SIGN
+                   && input.charAt(charIndex + 1) == SymbolChart.ASSIGN_SIGN){
+                    tokens.add(SymbolChart.EQUAL);
                     charIndex += 2;
                     continue;
                 }
                 
                 //place special symbol in tokens
-                tokens.add(SymbolTable.SYMBOL_MAP.get(input.charAt(charIndex)));
+                tokens.add(SymbolChart.SYMBOL_MAP.get(input.charAt(charIndex)));
                 charIndex++;
                 continue;
             }

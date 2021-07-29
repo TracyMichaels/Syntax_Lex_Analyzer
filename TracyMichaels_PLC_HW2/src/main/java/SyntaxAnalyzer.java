@@ -37,30 +37,30 @@ public class SyntaxAnalyzer {
     
     //<PROGRAM> --> "{" <START> "}"
     private void PROGRAM(){
-        if(tokens.get(currTokenIndex) != SymbolTable.BEGIN_PROGRAM) System.exit(exitWithErr());
+        if(tokens.get(currTokenIndex) != SymbolChart.BEGIN_PROGRAM) System.exit(exitWithErr());
         currTokenIndex++;
         START();
-        System.exit((tokens.get(currTokenIndex) == SymbolTable.END_PROGRAM) ? exitWithoutErr() : exitWithErr());
+        System.exit((tokens.get(currTokenIndex) == SymbolChart.END_PROGRAM) ? exitWithoutErr() : exitWithErr());
     }
     
     //<START>   --> <STMT> ";" {<STMT> ";"}
     private void START(){
         
         STMT();
-        while(tokens.get(currTokenIndex) == SymbolTable.END_STMT){
+        while(tokens.get(currTokenIndex) == SymbolChart.END_STMT){
             getNextToken();
-            if(tokens.get(currTokenIndex) == SymbolTable.END_PROGRAM) return;
+            if(tokens.get(currTokenIndex) == SymbolChart.END_PROGRAM) return;
             STMT();
             
         }
-        if(tokens.get(currTokenIndex) != SymbolTable.END_STMT) System.exit(exitWithErr());
+        if(tokens.get(currTokenIndex) != SymbolChart.END_STMT) System.exit(exitWithErr());
         currTokenIndex++;
     }    
     
     //<STMT>     --> <EXPR> {"=" <EXPR>}
     private void STMT(){
         EXPR();
-        while(tokens.get(currTokenIndex) == SymbolTable.ASSIGN){
+        while(tokens.get(currTokenIndex) == SymbolChart.ASSIGN){
             getNextToken();
             EXPR();
         }        
@@ -69,10 +69,10 @@ public class SyntaxAnalyzer {
     //<EXPR>      --> <TERM> {("==", "!=", "<", ">") <TERM>}
     private void EXPR(){
         TERM();
-        while( tokens.get(currTokenIndex) == SymbolTable.EQUAL
-           |tokens.get(currTokenIndex) == SymbolTable.NOT_EQUAL
-           |tokens.get(currTokenIndex) == SymbolTable.LESS_THAN
-           |tokens.get(currTokenIndex) == SymbolTable.GREATER_THAN){
+        while( tokens.get(currTokenIndex) == SymbolChart.EQUAL
+           |tokens.get(currTokenIndex) == SymbolChart.NOT_EQUAL
+           |tokens.get(currTokenIndex) == SymbolChart.LESS_THAN
+           |tokens.get(currTokenIndex) == SymbolChart.GREATER_THAN){
             
             getNextToken();
             TERM();            
@@ -82,8 +82,8 @@ public class SyntaxAnalyzer {
     //<TERM>      --> <FACTOR> {("+", "-") <FACTOR>}
     private void TERM(){
         FACTOR();
-        while( tokens.get(currTokenIndex) == SymbolTable.ADD_OP
-           |tokens.get(currTokenIndex) == SymbolTable.SUB_OP){
+        while( tokens.get(currTokenIndex) == SymbolChart.ADD_OP
+           |tokens.get(currTokenIndex) == SymbolChart.SUB_OP){
             
             getNextToken();
             FACTOR();
@@ -93,9 +93,9 @@ public class SyntaxAnalyzer {
     //<FACTOR>    --> <ID> {("*", "/", "%") <ID>}
     private void FACTOR(){
         ID();
-        while( tokens.get(currTokenIndex) == SymbolTable.MUL_OP
-           |tokens.get(currTokenIndex) == SymbolTable.DIV_OP
-           |tokens.get(currTokenIndex) == SymbolTable.MOD_OP){
+        while( tokens.get(currTokenIndex) == SymbolChart.MUL_OP
+           |tokens.get(currTokenIndex) == SymbolChart.DIV_OP
+           |tokens.get(currTokenIndex) == SymbolChart.MOD_OP){
             
             getNextToken();
             ID();
@@ -105,19 +105,19 @@ public class SyntaxAnalyzer {
     //<ID>        --> var | int | float | "(" <BEGIN> ")"
     private void ID(){
         switch(tokens.get(currTokenIndex)){
-            case SymbolTable.INT_LIT:
+            case SymbolChart.INT_LIT:
                 getNextToken();
                 break;
-            case SymbolTable.FLOAT_LIT:
+            case SymbolChart.FLOAT_LIT:
                 getNextToken();
                 break;
-            case SymbolTable.VAR:
+            case SymbolChart.VAR:
                 getNextToken();
                 break;
-            case SymbolTable.OPEN_PAREN:
+            case SymbolChart.OPEN_PAREN:
                 getNextToken();
                 STMT();
-                if(tokens.get(currTokenIndex) != SymbolTable.CLOSE_PAREN) {
+                if(tokens.get(currTokenIndex) != SymbolChart.CLOSE_PAREN) {
                     System.exit(exitWithErr());
                 } else {
                     getNextToken();
