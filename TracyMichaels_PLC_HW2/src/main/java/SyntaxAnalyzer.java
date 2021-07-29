@@ -35,10 +35,10 @@ public class SyntaxAnalyzer {
     
     //<PROGRAM> --> "{" <START> "}"
     private void PROGRAM(){
-        if(tokens.get(currTokenIndex) != SymbolChart.BEGIN_PROGRAM) System.exit(exitWithErr());
+        if(tokens.get(currTokenIndex) != SymbolChart.BEGIN_BLOCK) System.exit(exitWithErr());
         currTokenIndex++;
         START();
-        System.exit((tokens.get(currTokenIndex) == SymbolChart.END_PROGRAM) ? exitWithoutErr() : exitWithErr());
+        System.exit((tokens.get(currTokenIndex) == SymbolChart.END_BLOCK) ? exitWithoutErr() : exitWithErr());
     }
     
     //<START>   --> <STMT> ";" {<STMT> ";"}
@@ -47,7 +47,7 @@ public class SyntaxAnalyzer {
         STMT();
         while(tokens.get(currTokenIndex) == SymbolChart.END_STMT){
             getNextToken();
-            if(tokens.get(currTokenIndex) == SymbolChart.END_PROGRAM) return;
+            if(tokens.get(currTokenIndex) == SymbolChart.END_BLOCK) return;
             STMT();
             
 

@@ -27,8 +27,8 @@ public class SymbolChart {
     public final static char CLOSE_PAREN_SIGN = ')';
     public final static char END_STMT_SIGN = ';';
     public final static char NOT_EQUAL_START_SIGN = '!';
-    public final static char BEGIN_PROGRAM_SIGN = '{';
-    public final static char END_PROGRAM_SIGN = '}';
+    public final static char BEGIN_BLOCK_SIGN = '{';
+    public final static char END_BLOCK_SIGN = '}';
     
     //combination of special characters can be used to create new meaning
     //defines equality sign as two assignment signs
@@ -54,8 +54,8 @@ public class SymbolChart {
     public final static int OPEN_PAREN = 400;
     public final static int CLOSE_PAREN = 410;
     public final static int END_STMT = 500;   
-    public final static int BEGIN_PROGRAM = 600; 
-    public final static int END_PROGRAM = 610; 
+    public final static int BEGIN_BLOCK = 600; 
+    public final static int END_BLOCK = 610; 
     
     
     
@@ -72,6 +72,7 @@ public class SymbolChart {
     public static final String VOID_KEY_STR = "for";
     public static final String BOOL_KEY_STR = "for";
     
+    //keyword tokens
     public static final int FOR_KEY = 701;
     public static final int IF_KEY = 702;
     public static final int ELSE_KEY = 703;
@@ -101,8 +102,8 @@ public class SymbolChart {
         SYMBOL_MAP.put(OPEN_PAREN_SIGN, OPEN_PAREN);
         SYMBOL_MAP.put(CLOSE_PAREN_SIGN, CLOSE_PAREN);
         SYMBOL_MAP.put(END_STMT_SIGN, END_STMT); 
-        SYMBOL_MAP.put(BEGIN_PROGRAM_SIGN, BEGIN_PROGRAM); 
-        SYMBOL_MAP.put(END_PROGRAM_SIGN, END_PROGRAM); 
+        SYMBOL_MAP.put(BEGIN_BLOCK_SIGN, BEGIN_BLOCK); 
+        SYMBOL_MAP.put(END_BLOCK_SIGN, END_BLOCK); 
         
     }
     
