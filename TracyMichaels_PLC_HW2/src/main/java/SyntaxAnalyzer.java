@@ -1,6 +1,4 @@
-
 import java.util.List;
-
 
 /**
  *
@@ -52,6 +50,7 @@ public class SyntaxAnalyzer {
             if(tokens.get(currTokenIndex) == SymbolChart.END_PROGRAM) return;
             STMT();
             
+
         }
         if(tokens.get(currTokenIndex) != SymbolChart.END_STMT) System.exit(exitWithErr());
         currTokenIndex++;

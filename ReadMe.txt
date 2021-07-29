@@ -20,7 +20,7 @@ of file they wish to analyze
 /*
     rules:
     
-    <PROGRAM>	--> <PROGRAM>   --> "{" <START> "}"
+    <PROGRAM>	--> "{" <START> "}"
     <START>   	--> <STMT> ";" {<STMT> ";"}
     <STMT>     	--> <EXPR> {"=" <EXPR>}
     <EXPR>      --> <TERM> {("==", "!=", "<", ">") <TERM>}
@@ -49,7 +49,5 @@ of file they wish to analyze
     end of statement=   ;     
     begin program   =   {
     end program     =   }	          
-    everything else =   undefined 
-    
-    
+    everything else =   undefined     
 */

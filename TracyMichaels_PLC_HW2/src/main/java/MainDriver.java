@@ -18,6 +18,7 @@ public class MainDriver {
         // get input, either commandline args or user input
         // precondition: must be file path
         if (args.length > 0) {
+
             inputFile = args[0];
         } else {
             System.out.println("Enter file path:");
