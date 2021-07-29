@@ -61,16 +61,16 @@ public class SymbolChart {
     
     //key words
     public static final String FOR_KEY_STR = "for";
-    public static final String IF_KEY_STR = "for";
-    public static final String ELSE_KEY_STR = "for";
-    public static final String WHILE_KEY_STR = "for";
-    public static final String DO_KEY_STR = "for";
-    public static final String INT_KEY_STR = "for";
-    public static final String FLOAT_KEY_STR = "for";
-    public static final String SWITCH_KEY_STR = "for";
-    public static final String CLASS_KEY_STR = "for";
-    public static final String VOID_KEY_STR = "for";
-    public static final String BOOL_KEY_STR = "for";
+    public static final String IF_KEY_STR = "if";
+    public static final String ELSE_KEY_STR = "else";
+    public static final String WHILE_KEY_STR = "while";
+    public static final String DO_KEY_STR = "do";
+    public static final String INT_KEY_STR = "int";
+    public static final String FLOAT_KEY_STR = "float";
+    public static final String SWITCH_KEY_STR = "switch";
+    public static final String CLASS_KEY_STR = "class";
+    public static final String VOID_KEY_STR = "void";
+    public static final String BOOL_KEY_STR = "bool";
     
     //keyword tokens
     public static final int FOR_KEY = 701;
