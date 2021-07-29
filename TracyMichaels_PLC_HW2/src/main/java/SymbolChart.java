@@ -119,6 +119,5 @@ public class SymbolChart {
         KEYWORD_MAP.put(CLASS_KEY_STR, CLASS_KEY);
         KEYWORD_MAP.put(VOID_KEY_STR, VOID_KEY);
         KEYWORD_MAP.put(BOOL_KEY_STR, BOOL_KEY);
-        
     }
 }
