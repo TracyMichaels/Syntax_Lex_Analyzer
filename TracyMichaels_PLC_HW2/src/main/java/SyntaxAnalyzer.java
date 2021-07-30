@@ -38,12 +38,14 @@ public class SyntaxAnalyzer {
         if(tokens.get(currTokenIndex) != SymbolChart.BEGIN_BLOCK) System.exit(exitWithErr());
         currTokenIndex++;
         START();
+        //check if last token
+        if(currTokenIndex + 1 != tokens.size()) return;
         System.exit((tokens.get(currTokenIndex) == SymbolChart.END_BLOCK) ? exitWithoutErr() : exitWithErr());
     }
     
     //<START>   --> <STMT> ";" {<STMT> ";"}
     private void START(){
-        
+        checkForLoopKeyword();
         STMT();
         while(tokens.get(currTokenIndex) == SymbolChart.END_STMT){
             getNextToken();
@@ -139,6 +141,79 @@ public class SyntaxAnalyzer {
     
     private int exitWithErr(){
         System.out.println("Invalid Syntax");
-        return 0;
+        return 1;
+    }
+    
+    //subprogram for while, do-while, and if-else statements
+    private void loopKeywordFound(){
+        switch(tokens.get(currTokenIndex)){
+            //'if (<STMT>) { <STMT_LIST> (or PROGRAM in this case)} else { <STMT_LIST> }
+            case SymbolChart.IF_KEY:
+                getNextToken();
+                //next part would need to be a '( <STMT> )'
+                //ID() is already set up to handle that syntax
+                //so this checks the next token is a '(' and if it's not then
+                //program exits with error
+                if(tokens.get(currTokenIndex) == SymbolChart.OPEN_PAREN){                    
+                    ID();
+                } else {
+                    System.exit(exitWithErr());
+                }
+                //if syntax is correct then ID() exits and next needs to be
+                //'{ <STMT_LIST>}' and PROGRAM() is already set up to handle that syntax
+                //had to modify to check if it was at the end of the program or not 
+                //so that it did not exit early from the turnary statement
+                PROGRAM();
+                //check for else, if found get check statement list
+                if(tokens.get(currTokenIndex).equals(SymbolChart.ELSE_KEY)) PROGRAM();
+                break;
+            //'while ( <STMT> ) {<STMT_LIST>( or <PROGRAM> in this case)}
+            case SymbolChart.WHILE_KEY:                
+                getNextToken();
+                //ID() to handle '(<STMT>)
+                if(tokens.get(currTokenIndex) == SymbolChart.OPEN_PAREN){                    
+                    ID();
+                } else {
+                    System.exit(exitWithErr());
+                }                
+                // PROGRAM to handle '{ <STMT_LIST>}'
+                PROGRAM();                
+                break;
+            // 'do { <STMT_LIST> } while (<STMT>)'   
+            case SymbolChart.DO_KEY:
+                getNextToken();
+                //to handle '{ <STMT_LIST> }'
+                PROGRAM(); 
+                //check for while keyword
+                if(tokens.get(currTokenIndex).equals(SymbolChart.WHILE_KEY)){
+                    getNextToken();
+                    //to handle '(<STMT>)'
+                    if(tokens.get(currTokenIndex) == SymbolChart.OPEN_PAREN){                    
+                        ID();
+                    } else {
+                        System.exit(exitWithErr());
+                    }
+                } else {
+                    System.exit(exitWithErr());
+                }                
+                break;
+            default:
+                System.exit(exitWithErr());
+                
+        }
+    }
+
+    private void checkForLoopKeyword() {
+        if(SymbolChart.KEYWORD_MAP.containsValue(tokens.get(currTokenIndex))){
+            switch(tokens.get(currTokenIndex)){
+                case SymbolChart.IF_KEY:
+                case SymbolChart.WHILE_KEY:
+                case SymbolChart.DO_KEY:
+                    loopKeywordFound();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
